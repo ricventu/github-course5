@@ -30,11 +30,11 @@ function ShoppingListCheckOffService() {
 
   // List of shopping items
   var defaultShoppingList = [
-    "Buy 10 cookies",
-    "Buy 10 cookies",
-    "Buy 15 cookies",
-    "Buy 20 cookies",
-    "Buy all cookies in the shop!",
+    { name: "cookies", quantity: 10 },
+    { name: "cookies", quantity: 15 },
+    { name: "apple", quantity: 10 },
+    { name: "orange", quantity: 20 },
+    { name: "capcake", quantity: 25 },
   ];
   var tobuy = defaultShoppingList;
   var bought = [];
