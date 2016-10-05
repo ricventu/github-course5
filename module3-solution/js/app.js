@@ -26,19 +26,34 @@ function FoundItemsDirective() {
 
 function FoundItemsDirectiveController() {
   var list = this;
-
 }
 
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
   menu.found = [];
+  menu.message = "";
   menu.title = "Menu Choice";
+
   menu.search = function () {
-    var promise = MenuSearchService.getMatchedMenuItems(menu.searchTerm);
-    promise.then(function (response) {
-      menu.found = response;
-    })
+    menu.found = [];
+    if (menu.searchTerm === undefined || menu.searchTerm.trim() == '') {
+      menu.message = "Please enter data first";
+      menu.search_style = { 'border-color': 'red' };
+    } else {
+      menu.search_style = { 'border-color': '#ccc' };
+      var promise = MenuSearchService.getMatchedMenuItems(menu.searchTerm.trim());
+      promise.then(function (response) {
+        menu.found = response;
+        if (menu.found.length < 1) {
+          menu.message = "Ops.. nothing found :(";
+        } else {
+          menu.message = "";
+        }
+      }, function (response) {
+        menu.message = "Ops.. an error is occurred :(";
+      });
+    }
   }
   menu.removeItem = function (index) {
     menu.found.splice(index,1);
@@ -57,12 +72,18 @@ function MenuSearchService($http, ApiBasePath) {
     })
     .then(function (response) {
         // process result and only keep items that match
-        var resultItems = response.data;
-        var foundItems = resultItems.menu_items;
+        var resultItems = response.data.menu_items;
+        var foundItems = [];
+        for (var i = 0; i < resultItems.length; i++) {
+          var item = resultItems[i];
+          if (item.description.includes(searchTerm)) {
+            foundItems.push(item);
+          }
+        }
 
         // return processed items
         return foundItems;
-    })
+    });
     return promise;
   };
 }
