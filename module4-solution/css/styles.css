@@ -1,0 +1,26 @@
+body {
+  font-size: 1.2em;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+.loading-icon {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+}
+/*a[ui-sref]:hover {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+}*/
+li[ui-sref]:hover {
+  /*display: inline-block;*/
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
