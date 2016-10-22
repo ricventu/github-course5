@@ -113,6 +113,12 @@ h3.menu-item-title {
 }
 /* END SINGLE CATEGORY PAGE */
 
+/* SIGUP */
+.container.signup {
+  max-width: 360px;
+}
+/* END SIGHUP */
+
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
