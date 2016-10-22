@@ -1,0 +1,11 @@
+.container.signup {
+  max-width: 360px;
+}
+
+.ng-touched.ng-invalid {
+  border: 3px red solid;
+}
+
+.msgwarning {
+  color: red;
+}
