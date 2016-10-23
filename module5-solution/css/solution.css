@@ -2,10 +2,18 @@
   max-width: 360px;
 }
 
-.ng-touched.ng-invalid {
-  border: 3px red solid;
+.signup input.ng-invalid.ng-touched {
+  border: 2px red solid;
 }
 
+.signup input.ng-valid.ng-touched {
+  border: 2px #78FA89 solid;
+}
 .msgwarning {
   color: red;
+}
+
+.btn-signup {
+  background-color: black;
+  border-color: grey;
 }
