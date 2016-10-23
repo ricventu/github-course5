@@ -7,16 +7,34 @@ angular.module('common')
 function UserService() {
   var service = this;
 
-  service.user = null;
+  service.signup = true;
 
-  service.putUser =  function(user) {
+  //service.user = null;
+  service.user = {
+      firstname: 'Pippo',
+      lastname: 'Pluto',
+      email: 'pippo@pluto.com',
+      phonenumber: '1234',
+      short_name: 'A1'
+  };
+
+
+  service.signUp =  function(user) {
     service.user = user;
-    console.log('user:', user);
+    service.signup = true;
   };
 
   service.getUser = function() {
     return service.user;
   };
+
+  service.isSignUp = function() {
+    return service.signup !== false;
+  }
+
+  service.signOut = function() {
+    return service.signup = false;
+  }
 }
 
 })();

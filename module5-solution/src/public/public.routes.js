@@ -47,5 +47,18 @@ function routeConfig ($stateProvider) {
       controller: 'SignupController',
       controllerAs: 'signupCtrl'
     })
+    .state('public.userinfo', {
+      url: '/userinfo',
+      templateUrl: 'src/public/account/info.html',
+      controller: 'UserInfoController',
+      controllerAs: 'infoCtrl',
+      resolve: {
+        menuItem: ['UserService','MenuService', function (UserService, MenuService) {
+          var user = UserService.getUser();
+          console.log(user);
+          return MenuService.getMenuItem(user.short_name);
+        }]
+      }
+    })
 }
 })();

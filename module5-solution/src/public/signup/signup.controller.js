@@ -10,13 +10,13 @@ function SignupController(UserService) {
 
 
   $ctrl.signup = function() {
-    UserService.putUser({
-      firstName: $ctrl.firstName,
-      lastName: $ctrl.lastName,
+    UserService.signUp({
+      firstname: $ctrl.firstname,
+      lastname: $ctrl.lastname,
       email: $ctrl.email,
       phonenumber: $ctrl.phonenumber,
       short_name: $ctrl.short_name
-    })
+    });
   };
 };
 

@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 id="menu-categories-title" class="text-center">Account Information</h2>
+
+  <div ng-if="!infoCtrl.isSignUp()">
+      <div class="text-center">
+      Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+      </div>
+  </div>
+  <div ng-if="infoCtrl.isSignUp()">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+        <table class="userinfo">
+          <tr><th>First Name:</th><td>{{infoCtrl.user.firstname}}</td></tr>
+          <tr><th>Last Name:</th><td>{{infoCtrl.user.lastname}}</td></tr>
+          <tr><th>Email:</th><td>{{infoCtrl.user.email}}</td></tr>
+          <tr><th>Phone Number:</th><td>{{infoCtrl.user.phonenumber}}</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+        <p>Favourite Dish:</p>
+            <menu-item menu-item="infoCtrl.menuItem"></menu-item>
+    </div>
+  </div>
+</div>

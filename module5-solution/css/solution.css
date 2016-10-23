@@ -17,3 +17,14 @@
   background-color: black;
   border-color: grey;
 }
+
+table.userinfo {
+  width: 100%;
+}
+table.userinfo th {
+  text-align: right;
+}
+table.userinfo td {
+  text-align: left;
+  padding-left: 20px;
+}
