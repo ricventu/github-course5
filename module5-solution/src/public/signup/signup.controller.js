@@ -18,6 +18,10 @@ function SignupController(UserService) {
       short_name: $ctrl.short_name
     });
   };
+
+  $ctrl.isSignUp = function() {
+    return UserService.isSignUp();
+  }
 };
 
 })();

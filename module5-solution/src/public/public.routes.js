@@ -54,9 +54,11 @@ function routeConfig ($stateProvider) {
       controllerAs: 'infoCtrl',
       resolve: {
         menuItem: ['UserService','MenuService', function (UserService, MenuService) {
-          var user = UserService.getUser();
-          console.log(user);
-          return MenuService.getMenuItem(user.short_name);
+          if (UserService.isSignUp()) {
+            var user = UserService.getUser();
+            return MenuService.getMenuItem(user.short_name);
+          }
+          return undefined;
         }]
       }
     })

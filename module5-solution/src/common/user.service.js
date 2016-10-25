@@ -7,17 +7,9 @@ angular.module('common')
 function UserService() {
   var service = this;
 
-  service.signup = true;
+  service.signup = false;
 
-  //service.user = null;
-  service.user = {
-      firstname: 'Pippo',
-      lastname: 'Pluto',
-      email: 'pippo@pluto.com',
-      phonenumber: '1234',
-      short_name: 'A1'
-  };
-
+  service.user = null;
 
   service.signUp =  function(user) {
     service.user = user;

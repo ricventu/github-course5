@@ -49,9 +49,9 @@
           placeholder="phone ###-###-####"
           pattern="(\d{3})-(\d{3})-(\d{4})"
           required>
-      <span class="msgwarning" ng-if="formSignup.phonenumber.$error.required
+      <span class="msgwarning" ng-if="formSignup.phonenumber.$invalid
                   && formSignup.phonenumber.$touched">
-        Phone number is required
+        Phone number must be in the form <br>###-###-####
       </span>
     </div>
     <div class="form-group">
@@ -64,7 +64,8 @@
           >
       <span ng-show="formSignup.short_name.$pending.short_name">
         Checking if this menu number is valid...</span>
-      <span class="msgwarning" ng-show="formSignup.short_name.$error.short_name
+      <span class="msgwarning"
+        ng-show="formSignup.short_name.$error.short_name
                      && formSignup.short_name.$touched">
         This menu number is not valid</span>
     </div>
@@ -72,7 +73,12 @@
 	     <button class="btn btn-signup btn-block" id="signupSubmit"
           ng-disabled="formSignup.$invalid"
           ng-click="signupCtrl.signup()"
-          ui-sref="public.menu">Sign Up</button>
+          >Sign Up</button>
+        <div class="text-center" ng-if="signupCtrl.isSignUp()">
+            <span>
+            Your information has been saved!
+            </span>
+        </div>
 		</div>
   </form>
 

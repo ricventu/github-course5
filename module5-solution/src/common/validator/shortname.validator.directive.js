@@ -4,13 +4,16 @@
 angular.module('common')
 .directive('shortnameValidator', ShortnameValidatorDirective);
 
-ShortnameValidatorDirective.$inject = ['MenuService'];
-function ShortnameValidatorDirective(MenuService) {
+ShortnameValidatorDirective.$inject = ['MenuService', '$q'];
+function ShortnameValidatorDirective(MenuService, $q) {
   var ddo = {
     restrict: 'AE',
     require: 'ngModel',
     link: function (scope, element, attrs, ctrl) {
       ctrl.$asyncValidators.short_name = function (modelValue, viewValue) {
+        if (modelValue === undefined) {
+          return $q.when();
+        }
         var promise = MenuService.getMenuItem(modelValue);
         promise.then(function () {
           return true;
