@@ -8,6 +8,16 @@ SignupController.$inject = ['UserService'];
 function SignupController(UserService) {
   var $ctrl = this;
 
+  if (UserService.isSignUp()) {
+    var user = UserService.getUser();
+    $ctrl.firstname = user.firstname;
+    $ctrl.lastname = user.lastname;
+    $ctrl.email = user.email;
+    $ctrl.phonenumber = user.phonenumber;
+    $ctrl.short_name = user.short_name;
+
+  }
+
 
   $ctrl.signup = function() {
     UserService.signUp({
